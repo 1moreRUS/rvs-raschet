@@ -1,7 +1,7 @@
 /* Работа без интернета: программа и её файлы кэшируются при первом открытии. */
-const CACHE = 'rvs-2.0.0-2';
+const CACHE = 'rvs-2.0.0-3';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',
-  'frags/g-f3.jpg', 'frags/g-t3.jpg', 'frags/g-f4.jpg', 'frags/g-f56.jpg', 'frags/g-f7.jpg', 'frags/g-f8.jpg', 'frags/g-t4.jpg', 'frags/g-t5.jpg', 'frags/g-f9.jpg', 'frags/g-f1011.jpg', 'frags/km2-II.jpg', 'frags/km2-III.jpg', 'frags/km3-VI.jpg', 'frags/km4-view.jpg', 'frags/km4-mass.jpg', 'frags/km5-AA.jpg', 'frags/km5-notes.jpg'];
+  'g-f3.jpg', 'g-t3.jpg', 'g-f4.jpg', 'g-f56.jpg', 'g-f7.jpg', 'g-f8.jpg', 'g-t4.jpg', 'g-t5.jpg', 'g-f9.jpg', 'g-f1011.jpg', 'km2-II.jpg', 'km2-III.jpg', 'km3-VI.jpg', 'km4-view.jpg', 'km4-mass.jpg', 'km5-AA.jpg', 'km5-notes.jpg'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
