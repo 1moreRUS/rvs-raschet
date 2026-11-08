@@ -3,7 +3,7 @@ name: Android APK
 on:
   push:
     branches: [main]
-    paths: [index.html, 'frags/**', package.json, capacitor.config.json, .github/workflows/apk.yml]
+    paths: [index.html, '*.jpg', package.json, capacitor.config.json, .github/workflows/apk.yml]
   workflow_dispatch:
 
 permissions:
@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p www
           cp index.html manifest.webmanifest icon-192.png icon-512.png icon-maskable-512.png www/
-          cp -r frags www/
+          cp *.jpg www/
       - name: Проект Android
         run: npx cap add android && npx cap sync android
       - name: Иконка приложения
